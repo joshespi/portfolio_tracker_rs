@@ -1,39 +1,30 @@
 #[macro_use]
 extern crate rocket;
 
-use rocket::serde::Serialize;
+use rocket::figment::Figment;
+use rocket::tokio::fs;
 use rocket::serde::json::Json;
-use std::fs;
-use serde::Deserialize; // Import the Deserialize trait
+use rocket::serde::{Deserialize, Serialize};
+use tokio::fs::File;
 
-#[derive(Serialize, Deserialize)] // Implement Deserialize trait for deserialization
+#[derive(Serialize, Deserialize)]
 struct Asset {
+    symbol: String,
     name: String,
     quantity: f64,
     price: f64,
 }
 
-#[derive(Serialize, Deserialize)] // Implement Deserialize trait for deserialization
+#[derive(Serialize, Deserialize)]
 struct Portfolio {
-    name: String,
     assets: Vec<Asset>,
 }
 
 impl Portfolio {
-    fn new(name: &str) -> Portfolio {
+    fn new() -> Portfolio {
         Portfolio {
-            name: name.to_string(),
             assets: Vec::new(),
         }
-    }
-
-    fn add_asset(&mut self, name: &str, quantity: f64, price: f64) {
-        let asset = Asset {
-            name: name.to_string(),
-            quantity,
-            price,
-        };
-        self.assets.push(asset);
     }
 }
 
@@ -43,18 +34,33 @@ fn index() -> &'static str {
 }
 
 #[get("/portfolio")]
-fn get_portfolio() -> Result<Json<Portfolio>, String> {
-    let file_content = fs::read_to_string("portfolio.json")
-        .map_err(|e| format!("Failed to read portfolio file: {}", e))?;
+async fn get_portfolio() -> Json<Portfolio> {
+    println!("Reading portfolio file...");
+    let file_content = match fs::read_to_string("portfolio.json").await {
+        Ok(content) => content,
+        Err(_) => {
+            eprintln!("Error reading file");
+            return Json(Portfolio::new());
+        }
+    };
 
-    let portfolio: Portfolio = serde_json::from_str(&file_content)
-        .map_err(|e| format!("Failed to deserialize portfolio JSON: {}", e))?;
+    let portfolio: Portfolio = match serde_json::from_str(&file_content) {
+        Ok(portfolio) => portfolio,
+        Err(_) => {
+            eprintln!("Error deserializing JSON");
+            return Json(Portfolio::new());
+        }
+    };
 
-    Ok(Json(portfolio))
+    Json(portfolio)
 }
 
 
-#[launch]
-fn rocket() -> _ {
-    rocket::build().mount("/", routes![index, get_portfolio])
+#[rocket::main]
+async fn main() {
+    let figment = Figment::from(rocket::Config::default());
+    let rocket = rocket::custom(figment)
+        .mount("/", routes![index, get_portfolio]);
+
+    rocket.launch().await.unwrap();
 }
