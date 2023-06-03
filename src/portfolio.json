@@ -1,13 +1,168 @@
 {
-  "name": "My Portfolio",
-  "holdings": [
+  "crypt_portfolio": [
     {
-      "symbol": "AAPL",
-      "quantity": 10
+      "Ticker": "BTC-usd",
+      "Holdings": [
+        {
+          "Exchange": "Coinbase",
+          "Quantity": "0.00024937"
+        },
+        {
+          "Exchange": "Gemini",
+          "Quantity": "0.00543128"
+        },
+        {
+          "Exchange": "Uphold-Josh",
+          "Quantity": "0.00246475"
+        },
+        {
+          "Exchange": "Ledger",
+          "Quantity": "0.29330604"
+        }
+      ]
     },
     {
-      "symbol": "GOOGL",
-      "quantity": 5
+      "Ticker": "ETH-usd",
+      "Holdings": [
+        {
+          "Exchange": "Ledger",
+          "Quantity": "0.129854"
+        }
+      ]
+    },
+    {
+      "Ticker": "IOTA",
+      "Holdings": [
+        {
+          "Exchange": "Firefly-Ledger",
+          "Quantity": "1190"
+        }
+      ]
+    },
+    {
+      "Ticker": "ADA",
+      "Holdings": [
+        {
+          "Exchange": "Daedalus",
+          "Quantity": "600.96"
+        }
+      ]
+    },
+    {
+      "Ticker": "BAT",
+      "Holdings": [
+        {
+          "Exchange": "Gemini",
+          "Quantity": "20.9"
+        },
+        {
+          "Exchange": "Uphold-Josh",
+          "Quantity": "27.065"
+        },
+        {
+          "Exchange": "Ledger",
+          "Quantity": "253.44"
+        }
+      ]
+    },
+    {
+      "Ticker": "SMR",
+      "Holdings": [
+        {
+          "Exchange": "Firefly-Shimmer",
+          "Quantity": "63.54"
+        }
+      ]
+    }
+  ],
+  "stock_portfolio": [
+    {
+      "Ticker": "LARGE CAP INDEX",
+      "Holdings": [
+        {
+          "Account": "ROTHIRA-Webull",
+          "Quantity": "48.50"
+        },
+        {
+          "Account": "URS-roth",
+          "Quantity": "6.307"
+        }
+      ]
+    },
+    {
+      "Ticker": "SPLG",
+      "Holdings": [
+        {
+          "Account": "ROTHIRA-Webull",
+          "Quantity": "106.6"
+        }
+      ]
+    },
+    {
+      "Ticker": "PP",
+      "Holdings": [
+        {
+          "Account": "ROTHIRA-Webull",
+          "Quantity": "105"
+        }
+      ]
+    },
+    {
+      "Ticker": "INTERNATIONAL",
+      "Holdings": [
+        {
+          "Account": "URS-401k",
+          "Quantity": "22.444"
+        }
+      ]
+    },
+    {
+      "Ticker": "PG",
+      "Holdings": [
+        {
+          "Account": "Individual-Webull",
+          "Quantity": "0.1539"
+        }
+      ]
+    },
+    {
+      "Ticker": "AAPL",
+      "Holdings": [
+        {
+          "Account": "Individual-Webull",
+          "Quantity": "0.09272"
+        }
+      ]
+    }
+  ],
+  "vehicle_assets": [
+    {
+      "Name": "2014 Jeep Patriot",
+      "Current Value": "$5,500.00"
+    },
+    {
+      "Name": "2017 Kia Optima",
+      "Current Value": "$13,000.00"
+    }
+  ],
+  "realestate_assets": [
+    {
+      "Name": "1242s 2970 e",
+      "Current Value": "(417800+389796)/2"
+    }
+  ],
+  "debts": [
+    {
+      "name": "Mortgage",
+      "amount_owed": "$109,800.00"
+    },
+    {
+      "name": "Kia",
+      "amount_owed": "$4,100.00"
+    },
+    {
+      "name": "HELOC",
+      "amount_owed": "$37,900.00"
     }
   ]
 }
