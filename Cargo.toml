@@ -1,11 +1,9 @@
 [package]
-name = "portfolio-tracker"
+name = "simple-api-rocket"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+rocket = {version = "0.5.0-rc.3", features = ["json"]}
 serde = { version = "1.0", features = ["derive"] }
-serde_json = "1.0.68"
-rocket = {version = "0.5.0-rc.1", features = ["json"]}
-devise_core = "0.2.1-alpha.3"
-tokio = "1.12.0"
+serde_json = "1.0"

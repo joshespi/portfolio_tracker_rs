@@ -1,15 +1,13 @@
-[
+{
+  "name": "My Portfolio",
+  "holdings": [
     {
       "symbol": "AAPL",
-      "name": "Apple Inc.",
-      "quantity": 100,
-      "price": 150.25
+      "quantity": 10
     },
     {
       "symbol": "GOOGL",
-      "name": "Alphabet Inc.",
-      "quantity": 50,
-      "price": 2534300.75
+      "quantity": 5
     }
   ]
-  
+}
