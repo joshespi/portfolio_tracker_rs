@@ -1,60 +1,32 @@
-#[macro_use]
-extern crate rocket;
-
-use rocket::serde::Serialize;
+use rocket::{get, routes};
+use rocket::serde::{Serialize, Deserialize};
 use rocket::serde::json::Json;
-use std::fs;
-use serde::Deserialize; // Import the Deserialize trait
 
-#[derive(Serialize, Deserialize)] // Implement Deserialize trait for deserialization
-struct Asset {
-    name: String,
-    quantity: f64,
-    price: f64,
-}
+#[macro_use] extern crate rocket;
 
-#[derive(Serialize, Deserialize)] // Implement Deserialize trait for deserialization
+
+#[derive(Debug, Deserialize, Serialize)]
 struct Portfolio {
     name: String,
-    assets: Vec<Asset>,
+    holdings: Vec<Holding>,
 }
 
-impl Portfolio {
-    fn new(name: &str) -> Portfolio {
-        Portfolio {
-            name: name.to_string(),
-            assets: Vec::new(),
-        }
-    }
-
-    fn add_asset(&mut self, name: &str, quantity: f64, price: f64) {
-        let asset = Asset {
-            name: name.to_string(),
-            quantity,
-            price,
-        };
-        self.assets.push(asset);
-    }
+#[derive(Debug, Deserialize, Serialize)]
+struct Holding {
+    symbol: String,
+    quantity: u32,
 }
 
 #[get("/")]
-fn index() -> &'static str {
-    "Welcome to the portfolio tracker!"
+fn get_portfolio() -> Json<Portfolio> {
+    // Read the portfolio data from a JSON file
+    let portfolio: Portfolio = serde_json::from_str(include_str!("portfolio.json"))
+        .expect("Failed to read portfolio data");
+
+    Json(portfolio)
 }
-
-#[get("/portfolio")]
-fn get_portfolio() -> Result<Json<Portfolio>, String> {
-    let file_content = fs::read_to_string("portfolio.json")
-        .map_err(|e| format!("Failed to read portfolio file: {}", e))?;
-
-    let portfolio: Portfolio = serde_json::from_str(&file_content)
-        .map_err(|e| format!("Failed to deserialize portfolio JSON: {}", e))?;
-
-    Ok(Json(portfolio))
-}
-
 
 #[launch]
 fn rocket() -> _ {
-    rocket::build().mount("/", routes![index, get_portfolio])
+    rocket::build().mount("/", routes![get_portfolio])
 }
