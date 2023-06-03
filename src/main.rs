@@ -2,19 +2,60 @@ use rocket::{get, routes};
 use rocket::serde::{Serialize, Deserialize};
 use rocket::serde::json::Json;
 
-#[macro_use] extern crate rocket;
-
+#[macro_use]
+extern crate rocket;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Portfolio {
-    name: String,
-    holdings: Vec<Holding>,
+    crypt_portfolio: Vec<CryptoPortfolio>,
+    stock_portfolio: Vec<StockPortfolio>,
+    vehicle_assets: Vec<VehicleAsset>,
+    realestate_assets: Vec<RealEstateAsset>,
+    debts: Vec<Debt>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
-struct Holding {
-    symbol: String,
-    quantity: u32,
+struct CryptoPortfolio {
+    Ticker: String,
+    Holdings: Vec<CryptoHolding>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct StockPortfolio {
+    Ticker: String,
+    Holdings: Vec<StockHolding>,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct CryptoHolding {
+    Exchange: String,
+    Quantity: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct StockHolding {
+    Account: String,
+    Quantity: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct VehicleAsset {
+    Name: String,
+    #[serde(rename = "Current Value")]
+    CurrentValue: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct RealEstateAsset {
+    Name: String,
+    #[serde(rename = "Current Value")]
+    CurrentValue: String,
+}
+
+#[derive(Debug, Deserialize, Serialize)]
+struct Debt {
+    name: String,
+    amount_owed: String,
 }
 
 #[get("/")]
