@@ -1,9 +1,11 @@
 use rocket::{get, routes};
 use rocket::serde::{Serialize, Deserialize};
-use rocket::serde::json::Json;
+use tera::Context;
+use rocket::http::ContentType;
 
 #[macro_use]
 extern crate rocket;
+extern crate yew;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Portfolio {
@@ -16,40 +18,40 @@ struct Portfolio {
 
 #[derive(Debug, Deserialize, Serialize)]
 struct CryptoPortfolio {
-    Ticker: String,
-    Holdings: Vec<CryptoHolding>,
+    ticker: String,
+    holdings: Vec<CryptoHolding>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct StockPortfolio {
-    Ticker: String,
-    Holdings: Vec<StockHolding>,
+    ticker: String,
+    holdings: Vec<StockHolding>,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct CryptoHolding {
-    Exchange: String,
-    Quantity: String,
+    exchange: String,
+    quantity: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct StockHolding {
-    Account: String,
-    Quantity: String,
+    account: String,
+    quantity: String,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct VehicleAsset {
-    Name: String,
-    #[serde(rename = "Current Value")]
-    CurrentValue: String,
+    name: String,
+    #[serde(rename = "Current_Value")]
+    current_value: f64,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
 struct RealEstateAsset {
-    Name: String,
-    #[serde(rename = "Current Value")]
-    CurrentValue: String,
+    name: String,
+    #[serde(rename = "Current_Value")]
+    current_value: f64,
 }
 
 #[derive(Debug, Deserialize, Serialize)]
@@ -59,12 +61,21 @@ struct Debt {
 }
 
 #[get("/")]
-fn get_portfolio() -> Json<Portfolio> {
+fn get_portfolio() -> (ContentType, String) {
     // Read the portfolio data from a JSON file
     let portfolio: Portfolio = serde_json::from_str(include_str!("portfolio.json"))
         .expect("Failed to read portfolio data");
 
-    Json(portfolio)
+    let mut context = Context::new();
+    context.insert("portfolio", &portfolio);
+
+    // Render the HTML template and pass the portfolio data to it
+    let html_content = tera::Tera::new("templates/**/*")
+        .expect("Failed to create Tera instance")
+        .render("index.html", &context)
+        .expect("Failed to render HTML template");
+
+        (ContentType::HTML, html_content)
 }
 
 #[launch]
