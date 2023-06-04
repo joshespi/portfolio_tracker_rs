@@ -1,11 +1,11 @@
 use rocket::{get, routes};
 use rocket::serde::{Serialize, Deserialize};
 use tera::Context;
+use rocket::http::ContentType;
 
 #[macro_use]
 extern crate rocket;
 extern crate yew;
-
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Portfolio {
@@ -61,7 +61,7 @@ struct Debt {
 }
 
 #[get("/")]
-fn get_portfolio() -> String {
+fn get_portfolio() -> (ContentType, String) {
     // Read the portfolio data from a JSON file
     let portfolio: Portfolio = serde_json::from_str(include_str!("portfolio.json"))
         .expect("Failed to read portfolio data");
@@ -75,7 +75,7 @@ fn get_portfolio() -> String {
         .render("index.html", &context)
         .expect("Failed to render HTML template");
 
-    html_content
+        (ContentType::HTML, html_content)
 }
 
 #[launch]
