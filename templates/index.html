@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        /* Add your CSS styles here */
+        /* For example: */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Portfolio</h1>
+
+    <h2>Cryptocurrencies</h2>
+    <table>
+        <tr>
+            <th>Ticker</th>
+            <th>Exchange</th>
+            <th>Quantity</th>
+        </tr>
+        {% for crypto in portfolio.crypt_portfolio %}
+        {% for holding in crypto.holdings %}
+        <tr>
+            <td>{{ crypto.ticker }}</td>
+            <td>{{ holding.exchange }}</td>
+            <td>{{ holding.quantity }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+
+    <h2>Stocks</h2>
+    <table>
+        <tr>
+            <th>Ticker</th>
+            <th>Account</th>
+            <th>Quantity</th>
+        </tr>
+        {% for stock in portfolio.stock_portfolio %}
+        {% for holding in stock.holdings %}
+        <tr>
+            <td>{{ stock.ticker }}</td>
+            <td>{{ holding.account }}</td>
+            <td>{{ holding.quantity }}</td>
+        </tr>
+        {% endfor %}
+        {% endfor %}
+    </table>
+
+    <h2>Vehicle Assets</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Current Value</th>
+        </tr>
+        {% for vehicle in portfolio.vehicle_assets %}
+        <tr>
+            <td>{{ vehicle.name }}</td>
+            <td>{{ vehicle.Current_Value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Real Estate Assets</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Current Value</th>
+        </tr>
+        {% for realestate in portfolio.realestate_assets %}
+        <tr>
+            <td>{{ realestate.name }}</td>
+            <td>{{ realestate.Current_Value }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Debts</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Amount Owed</th>
+        </tr>
+        {% for debt in portfolio.debts %}
+        <tr>
+            <td>{{ debt.name }}</td>
+            <td>{{ debt.amount_owed }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

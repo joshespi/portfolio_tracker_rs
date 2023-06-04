@@ -1,154 +1,154 @@
 {
   "crypt_portfolio": [
     {
-      "Ticker": "BTC-usd",
-      "Holdings": [
+      "ticker": "BTC-usd",
+      "holdings": [
         {
-          "Exchange": "Coinbase",
-          "Quantity": "0.00024937"
+          "exchange": "Coinbase",
+          "quantity": "0.00024937"
         },
         {
-          "Exchange": "Gemini",
-          "Quantity": "0.00543128"
+          "exchange": "Gemini",
+          "quantity": "0.00543128"
         },
         {
-          "Exchange": "Uphold-Josh",
-          "Quantity": "0.00246475"
+          "exchange": "Uphold-Josh",
+          "quantity": "0.00246475"
         },
         {
-          "Exchange": "Ledger",
-          "Quantity": "0.29330604"
+          "exchange": "Ledger",
+          "quantity": "0.29330604"
         }
       ]
     },
     {
-      "Ticker": "ETH-usd",
-      "Holdings": [
+      "ticker": "ETH-usd",
+      "holdings": [
         {
-          "Exchange": "Ledger",
-          "Quantity": "0.129854"
+          "exchange": "Ledger",
+          "quantity": "0.129854"
         }
       ]
     },
     {
-      "Ticker": "IOTA",
-      "Holdings": [
+      "ticker": "IOTA",
+      "holdings": [
         {
-          "Exchange": "Firefly-Ledger",
-          "Quantity": "1190"
+          "exchange": "Firefly-Ledger",
+          "quantity": "1190"
         }
       ]
     },
     {
-      "Ticker": "ADA",
-      "Holdings": [
+      "ticker": "ADA",
+      "holdings": [
         {
-          "Exchange": "Daedalus",
-          "Quantity": "600.96"
+          "exchange": "Daedalus",
+          "quantity": "600.96"
         }
       ]
     },
     {
-      "Ticker": "BAT",
-      "Holdings": [
+      "ticker": "BAT",
+      "holdings": [
         {
-          "Exchange": "Gemini",
-          "Quantity": "20.9"
+          "exchange": "Gemini",
+          "quantity": "20.9"
         },
         {
-          "Exchange": "Uphold-Josh",
-          "Quantity": "27.065"
+          "exchange": "Uphold-Josh",
+          "quantity": "27.065"
         },
         {
-          "Exchange": "Ledger",
-          "Quantity": "253.44"
+          "exchange": "Ledger",
+          "quantity": "253.44"
         }
       ]
     },
     {
-      "Ticker": "SMR",
-      "Holdings": [
+      "ticker": "SMR",
+      "holdings": [
         {
-          "Exchange": "Firefly-Shimmer",
-          "Quantity": "63.54"
+          "exchange": "Firefly-Shimmer",
+          "quantity": "63.54"
         }
       ]
     }
   ],
   "stock_portfolio": [
     {
-      "Ticker": "LARGE CAP INDEX",
-      "Holdings": [
+      "ticker": "LARGE CAP INDEX",
+      "holdings": [
         {
-          "Account": "ROTHIRA-Webull",
-          "Quantity": "48.50"
+          "account": "ROTHIRA-Webull",
+          "quantity": "48.50"
         },
         {
-          "Account": "URS-roth",
-          "Quantity": "6.307"
+          "account": "URS-roth",
+          "quantity": "6.307"
         }
       ]
     },
     {
-      "Ticker": "SPLG",
-      "Holdings": [
+      "ticker": "SPLG",
+      "holdings": [
         {
-          "Account": "ROTHIRA-Webull",
-          "Quantity": "106.6"
+          "account": "ROTHIRA-Webull",
+          "quantity": "106.6"
         }
       ]
     },
     {
-      "Ticker": "PP",
-      "Holdings": [
+      "ticker": "PP",
+      "holdings": [
         {
-          "Account": "ROTHIRA-Webull",
-          "Quantity": "105"
+          "account": "ROTHIRA-Webull",
+          "quantity": "105"
         }
       ]
     },
     {
-      "Ticker": "INTERNATIONAL",
-      "Holdings": [
+      "ticker": "INTERNATIONAL",
+      "holdings": [
         {
-          "Account": "URS-401k",
-          "Quantity": "22.444"
+          "account": "URS-401k",
+          "quantity": "22.444"
         }
       ]
     },
     {
-      "Ticker": "PG",
-      "Holdings": [
+      "ticker": "PG",
+      "holdings": [
         {
-          "Account": "Individual-Webull",
-          "Quantity": "0.1539"
+          "account": "Individual-Webull",
+          "quantity": "0.1539"
         }
       ]
     },
     {
-      "Ticker": "AAPL",
-      "Holdings": [
+      "ticker": "AAPL",
+      "holdings": [
         {
-          "Account": "Individual-Webull",
-          "Quantity": "0.09272"
+          "account": "Individual-Webull",
+          "quantity": "0.09272"
         }
       ]
     }
   ],
   "vehicle_assets": [
     {
-      "Name": "2014 Jeep Patriot",
-      "Current Value": "$5,500.00"
+      "name": "2014 Jeep Patriot",
+      "Current_Value": 5500
     },
     {
-      "Name": "2017 Kia Optima",
-      "Current Value": "$13,000.00"
+      "name": "2017 Kia Optima",
+      "Current_Value": 13000
     }
   ],
   "realestate_assets": [
     {
-      "Name": "1242s 2970 e",
-      "Current Value": "(417800+389796)/2"
+      "name": "1242s 2970 e",
+      "Current_Value": 417800
     }
   ],
   "debts": [
@@ -162,7 +162,7 @@
     },
     {
       "name": "HELOC",
-      "amount_owed": "$37,900.00"
+      "amount_owed": "$37,900.001"
     }
   ]
 }
