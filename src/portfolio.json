@@ -12,7 +12,7 @@
           "quantity": "0.00543128"
         },
         {
-          "exchange": "Uphold-Josh",
+          "exchange": "Uphold",
           "quantity": "0.00246475"
         },
         {
@@ -56,7 +56,7 @@
           "quantity": "20.9"
         },
         {
-          "exchange": "Uphold-Josh",
+          "exchange": "Uphold",
           "quantity": "27.065"
         },
         {
@@ -147,7 +147,7 @@
   ],
   "realestate_assets": [
     {
-      "name": "1242s 2970 e",
+      "name": "1242 s 2970 e",
       "Current_Value": 417800
     }
   ],
