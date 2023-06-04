@@ -5,7 +5,6 @@ use rocket::http::ContentType;
 
 #[macro_use]
 extern crate rocket;
-extern crate yew;
 
 #[derive(Debug, Deserialize, Serialize)]
 struct Portfolio {
