@@ -1,7 +1,7 @@
-use rocket::{get, routes};
-use rocket::serde::{Serialize, Deserialize};
-use tera::Context;
 use rocket::http::ContentType;
+use rocket::serde::{Deserialize, Serialize};
+use rocket::{get, routes};
+use tera::Context;
 
 #[macro_use]
 extern crate rocket;
@@ -74,7 +74,7 @@ fn get_portfolio() -> (ContentType, String) {
         .render("index.html", &context)
         .expect("Failed to render HTML template");
 
-        (ContentType::HTML, html_content)
+    (ContentType::HTML, html_content)
 }
 
 #[launch]
