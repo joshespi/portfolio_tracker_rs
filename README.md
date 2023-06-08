@@ -8,3 +8,10 @@ loaded with some dummy information portfolio data. basic formatting.
 
 ## Run
 ```cargo run```
+
+## Roadmap
+
+- load in current prices
+- calculate current values
+- modify values
+- add/remove holdings
